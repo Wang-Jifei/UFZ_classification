@@ -7,23 +7,30 @@ import numpy as np
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import confusion_matrix
 """ ######### 1. load dataset ######### """
-def loadDataSet(filename):
-    fr = open(filename, 'rb')
+
+def loadDataSet(datatxt,labeltxt):
+    f1 = open(datatxt,'rb')
+    f2 = open(labeltxt, 'rb')
     data = []
     label = []
-    mat_txt= np.loadtxt(filename)
-    mat_data= mat_txt[:, :-1]
-    mat_label=mat_txt[:, -1]
-    for line in fr.readlines():
-        lineAttr = line.decode().strip().split('\t')
-        data.append([float(x) for x in lineAttr[:-1]])
-        label.append(float(lineAttr[-1]))
-    return mat_data,mat_label
+    np_data = np.loadtxt(datatxt)
+    np_label = np.loadtxt(labeltxt)
+    mat_data = np_data
+    mat_label = np_label
+    for line in f1.readlines():
+        lineAttr = line.decode().strip().split(' ')
+        data.append([float(x) for x in lineAttr])
+    for line in f2.readlines():
+        lineAttr = line.decode().strip().split(' ')
+        label.append(float(lineAttr[0]))
+    return mat_data, mat_label
 
 logging.basicConfig(level=logging.INFO,format='%(asctime)s %(message)s')
 
 """ ######### 2. define data and label ######### """
-data, label = loadDataSet('lda_result/label_result.txt')
+data_dir = r'lda_result/doc_topic_distribution.txt'
+label_dir = r'data/ufz_class.txt'
+data, label = loadDataSet(data_dir,label_dir)
 X = data   # 特征向量矩阵
 y = label
 n_feature=X.shape[1]# 有多少个特征值
