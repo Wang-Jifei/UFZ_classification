@@ -3,13 +3,21 @@
 ### Required packages 
 
 > pillow 
+> 
 > opencv 
+> 
 > pandas
+> 
 > numpy
+> 
 > scikit-image
+> 
 > scikit-learn
+> 
 > matplotlib
+> 
 > PIL
+> 
 > joblib, glob, shutil
 
 ### 1. SIFT Feature calculation
