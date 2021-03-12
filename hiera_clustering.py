@@ -1,35 +1,18 @@
-import math
+###cluster.py
+# 导入相应的包
+
+import scipy.cluster.hierarchy as sch
+
 import numpy as np
-import sklearn
-from sklearn.datasets import load_iris
-import os
+import matplotlib.pylab as plt
 def loadDataSet(fileName):
     data = np.loadtxt(fileName,delimiter=' ')
     #data = np.loadtxt(fileName, delimiter='\t', dtype=float, skiprows=1)
     return data
     #data =  np.loadtxt(fileName)
-from sklearn.cluster import AgglomerativeClustering
-"""
-if __name__ == '__main__':
-    data = [[16.9,0],[38.5,0],[39.5,0],[80.8,0],[82,0],[834.6,0],[116.1,0]]
-    input_dir=r'lda_result/doc_topic_distribution.txt'
-    dataset = loadDataSet(input_dir)
 
-    clustering = AgglomerativeClustering(n_clusters=7).fit(dataset)
-    print(clustering.labels_)
-    print(clustering.children_)
-"""
-###cluster.py
-# 导入相应的包
-import scipy
-import scipy.cluster.hierarchy as sch
-from scipy.cluster.vq import vq, kmeans, whiten
-import numpy as np
-import matplotlib.pylab as plt
-
-# 生成待聚类的数据点,这里生成了20个点,每个点4维:
-data = [[16.9, 0], [38.5, 0], [39.5, 0], [80.8, 0], [82, 0], [834.6, 0], [116.1, 0]]
-input_dir=r'lda_result/doc_topic_distribution.txt'
+# 读取数据
+input_dir=r'lda_result/doc_topic_distribution_500_1k.txt'
 dataset = loadDataSet(input_dir)
 # 加一个标签进行区分
 A = []

@@ -55,3 +55,26 @@ print(accuracy)
 cm=confusion_matrix(y_test,Y_pred)
 
 print(cm)
+# Write the result
+accuracy_f=open("lda_result/gbdt_result.txt",'w+')
+print(cm)
+accuracy_f.write("{}\n".format(accuracy))
+for i in range(len(cm[0])):
+    for j in range(len(cm)):
+        accuracy_f.write("{}\t".format(cm[i][j]))
+    accuracy_f.write("\n")
+accuracy_f.close()
+
+# Draw confusion matrix
+
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
+sns.set()
+f,ax=plt.subplots()
+sns.heatmap(cm,annot=True,ax=ax,cmap='Blues') #画热力图
+
+ax.set_title('confusion matrix') #标题
+ax.set_xlabel('predict') #x轴
+ax.set_ylabel('true') #y轴
+plt.show()
