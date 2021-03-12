@@ -15,6 +15,8 @@
 >
 > scikit-learn
 >
+> scipy
+> 
 > matplotlib
 >
 > PIL
