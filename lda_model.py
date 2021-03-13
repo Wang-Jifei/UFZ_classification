@@ -223,9 +223,9 @@ if __name__ == "__main__":
     #output_dir = r'Feature vector/poi_density_tfidf.txt'
     data_mat = np.loadtxt(input_dir)
     # LDA model
-    lda = LatentDirichletAllocation(n_components=500,# document vector
+    lda = LatentDirichletAllocation(n_components=600,# document vector
                                 doc_topic_prior=0.85,# alpha
-                                max_iter = 1000,
+                                max_iter = 2000,
                                 learning_method='online',
                                 verbose=True)
 
@@ -236,10 +236,10 @@ if __name__ == "__main__":
     # print doc-topic distribution
     np.set_printoptions(suppress=True)
     print(lda_topic)
-    np.savetxt("lda_result/doc_topic_distribution_500_1k.txt", lda_topic, fmt='%6f', delimiter=' ')
+    np.savetxt("lda_result/doc_topic_distribution_600_2k.txt", lda_topic, fmt='%6f', delimiter=' ')
     # print topic-word distribution
     print(lda.components_)
-    np.savetxt("lda_result/topic_word_distribution_500_1k.txt", lda.components_, fmt='%6f', delimiter=' ')
+    np.savetxt("lda_result/topic_word_distribution_600_2k.txt", lda.components_, fmt='%6f', delimiter=' ')
 
     """
         # 2.plot LDA results
